@@ -10,17 +10,31 @@
 //
 //  Type "usecase" for some magic!
 
+import Result
+
 struct AlbunsScene {
+
     struct FetchAlbuns {
         
         struct Request { }
         
         struct Response {
-            
+
+            enum State {
+                case sucess([Album])
+                case failure(errorMessage: String)
+            }
+            let state: State
         }
         
         struct ViewModel {
             
+            struct AlbumRow {
+                let title: String
+                let photoURL: String
+            }
+            
+            let albumRows: [AlbumRow]
         }
     }
 }

@@ -20,8 +20,14 @@ protocol UsersViewControllerOutput {
 
 class UsersViewController: UIViewController, UsersViewControllerInput {
     
+    // MARK: Propeties
+    
     var output: UsersViewControllerOutput?
     var router: UsersRouter?
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var tablewView: UITableView!
     
     // MARK: Object lifecycle
     

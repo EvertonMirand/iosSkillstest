@@ -38,13 +38,13 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
         do {
             let realm = try Realm()
             let validateUser = realm.objects(User.self).filter { user in
-                return user.email == request.email && user.password == request.password
+                return user.email.lowercased() == request.email.lowercased() && user.password == request.password
             }.first
             if let user = validateUser {
                 logedUser = user
                 state = .sucess(message: "Usuario logado com sucesso")
             } else {
-                state = .sucess(message: "Email ou senha não estão corretos")
+                state = .failure(errorMessage: "Email ou senha não estão corretos")
             }
         } catch { }
         let response = LoginScene.Login.Response(state: state)

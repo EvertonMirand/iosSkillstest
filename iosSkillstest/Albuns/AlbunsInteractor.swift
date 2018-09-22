@@ -11,11 +11,11 @@
 import Alamofire
 
 protocol AlbunsInteractorInput {
-    
+    func fetchAlbuns(request: AlbunsScene.FetchAlbuns.Request)
 }
 
 protocol AlbunsInteractorOutput {
-    
+    func presentAlbuns(response: AlbunsScene.FetchAlbuns.Response)
 }
 
 protocol AlbunsDataSource {
@@ -27,21 +27,44 @@ protocol AlbunsDataDestination {
 }
 
 protocol AlamofireAlbumUrl {
-    var albumURL: String { get }
+    var albunsURL: String { get }
 }
 
 extension AlamofireAlbumUrl {
 
-    var albumURL: String {
+    var albunsURL: String {
         return "https://jsonplaceholder.typicode.com/photos"
     }
 }
 
-class AlbunsInteractor: AlbunsInteractorInput, AlbunsDataSource, AlbunsDataDestination {
+class AlbunsInteractor: AlbunsInteractorInput, AlbunsDataSource, AlbunsDataDestination, AlamofireAlbumUrl {
     
     var output: AlbunsInteractorOutput?
+    var albuns: [Album] = []
     
     // MARK: Business logic
+    
+    func fetchAlbuns(request: AlbunsScene.FetchAlbuns.Request) {
+        var state = AlbunsScene.FetchAlbuns.Response.State.failure(errorMessage: "Não foi possivel receber os albuns")
+        
+        Alamofire.request(albunsURL)
+            .responseJSON { (response) in
+                switch response.result {
+                    
+                case .success:
+                    if let albuns = try? JSONDecoder().decode([Album].self, from: response.data!) {
+                        self.albuns = albuns
+                        state = .sucess(albuns)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                let response = AlbunsScene.FetchAlbuns.Response(state: state)
+                self.output?.presentAlbuns(response: response)
+        }
+        
+        
+    }
     
 
 }

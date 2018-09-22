@@ -45,6 +45,8 @@ class LoginViewController: UIViewController, LoginViewControllerInput {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailText.text = "a@a.com"
+        passwordText.text = "a"
         do {
             let realm = try Realm()
             let logins = realm.objects(User.self)

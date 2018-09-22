@@ -9,17 +9,33 @@
 //  https://github.com/HelmMobile/clean-swift-templates
 
 protocol AlbunsPresenterInput {
-    
+    func presentAlbuns(response: AlbunsScene.FetchAlbuns.Response)
 }
 
 protocol AlbunsPresenterOutput: class {
-    
+    func displayError(error: String)
+    func displayAlbuns(viewModel: AlbunsScene.FetchAlbuns.ViewModel)
 }
 
 class AlbunsPresenter: AlbunsPresenterInput {
     
     weak var output: AlbunsPresenterOutput?
-    
+
     // MARK: Presentation logic
     
+    func presentAlbuns(response: AlbunsScene.FetchAlbuns.Response) {
+        switch response.state {
+        case .sucess(let albuns):
+            let albunsRows = albuns.map { (album) -> AlbunsScene.FetchAlbuns.ViewModel.AlbumRow in
+                let albumRow = AlbunsScene.FetchAlbuns.ViewModel.AlbumRow(title: album.title, photoURL: album.imageUrl)
+                return albumRow
+            }
+            let viewModel = AlbunsScene.FetchAlbuns.ViewModel(albumRows: albunsRows)
+            output?.displayAlbuns(viewModel: viewModel)
+        case .failure(let errorMessage):
+            output?.displayError(error: errorMessage)
+        }
+    }
 }
+
+

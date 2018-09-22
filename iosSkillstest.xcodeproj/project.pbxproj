@@ -41,11 +41,16 @@
 		AC42820921567BA8005F1888 /* AlbunsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42820321567BA8005F1888 /* AlbunsViewController.swift */; };
 		AC42820A21567BA8005F1888 /* AlbunsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42820421567BA8005F1888 /* AlbunsInteractor.swift */; };
 		AC42820B21567BA8005F1888 /* AlbunsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42820521567BA8005F1888 /* AlbunsConfigurator.swift */; };
+		AC42820D215681F6005F1888 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42820C215681F6005F1888 /* Album.swift */; };
+		AC42821021569F9F005F1888 /* AlbunsViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42820F21569F9F005F1888 /* AlbunsViewController+UITableView.swift */; };
+		AC4282122156A0B1005F1888 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4282112156A0B1005F1888 /* AlbumTableViewCell.swift */; };
+		AC4282152156A359005F1888 /* UITableViewCellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4282142156A359005F1888 /* UITableViewCellIdentifier.swift */; };
+		AC71A9222156B6BC000CC37B /* UserViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC71A9212156B6BB000CC37B /* UserViewController+UITableView.swift */; };
 		ACA562DE21545A4D001F560C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA562DD21545A4D001F560C /* AppDelegate.swift */; };
 		ACA562E321545A4D001F560C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA562E121545A4D001F560C /* Main.storyboard */; };
 		ACA562E821545A53001F560C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA562E721545A53001F560C /* Assets.xcassets */; };
 		ACA562EB21545A53001F560C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA562E921545A53001F560C /* LaunchScreen.storyboard */; };
-		ACC6AE5821546A42001A21E7 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC6AE5721546A42001A21E7 /* AlbumCell.xib */; };
+		ACC6AE5821546A42001A21E7 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC6AE5721546A42001A21E7 /* AlbumTableViewCell.xib */; };
 		BF2338547054CFEF2DAAF169 /* Pods_iosSkillstest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E00F9BFBA4D5FC15AC3770E /* Pods_iosSkillstest.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,13 +91,18 @@
 		AC42820321567BA8005F1888 /* AlbunsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbunsViewController.swift; sourceTree = "<group>"; };
 		AC42820421567BA8005F1888 /* AlbunsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbunsInteractor.swift; sourceTree = "<group>"; };
 		AC42820521567BA8005F1888 /* AlbunsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbunsConfigurator.swift; sourceTree = "<group>"; };
+		AC42820C215681F6005F1888 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		AC42820F21569F9F005F1888 /* AlbunsViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbunsViewController+UITableView.swift"; sourceTree = "<group>"; };
+		AC4282112156A0B1005F1888 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		AC4282142156A359005F1888 /* UITableViewCellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellIdentifier.swift; sourceTree = "<group>"; };
+		AC71A9212156B6BB000CC37B /* UserViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserViewController+UITableView.swift"; sourceTree = "<group>"; };
 		ACA562DA21545A4D001F560C /* iosSkillstest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosSkillstest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA562DD21545A4D001F560C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACA562E221545A4D001F560C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACA562E721545A53001F560C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACA562EA21545A53001F560C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACA562EC21545A53001F560C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACC6AE5721546A42001A21E7 /* AlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
+		ACC6AE5721546A42001A21E7 /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
 		B6C5B50E9EEFD7DB5B0358F9 /* Pods-iosSkillstest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosSkillstest.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosSkillstest/Pods-iosSkillstest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +156,7 @@
 		AC4281CB2155DFAB005F1888 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				AC4282132156A345005F1888 /* Protocols */,
 				AC4281D621564D8D005F1888 /* Models */,
 				AC4281D32155E86B005F1888 /* CoreData */,
 				AC4281CC2155DFB7005F1888 /* Extensions */,
@@ -174,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				AC4281D721564D97005F1888 /* User.swift */,
+				AC42820C215681F6005F1888 /* Album.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,6 +212,7 @@
 				AC4281F6215677FD005F1888 /* UsersViewController.swift */,
 				AC4281F7215677FD005F1888 /* UsersInteractor.swift */,
 				AC4281F8215677FD005F1888 /* UsersConfigurator.swift */,
+				AC71A9212156B6BB000CC37B /* UserViewController+UITableView.swift */,
 			);
 			path = UsersScene;
 			sourceTree = "<group>";
@@ -207,14 +220,33 @@
 		AC4281FF21567B90005F1888 /* Albuns */ = {
 			isa = PBXGroup;
 			children = (
+				AC42820E21569F0F005F1888 /* Views */,
 				AC42820021567BA8005F1888 /* AlbunsPresenter.swift */,
 				AC42820121567BA8005F1888 /* AlbunsRouter.swift */,
 				AC42820221567BA8005F1888 /* AlbunsModels.swift */,
 				AC42820321567BA8005F1888 /* AlbunsViewController.swift */,
 				AC42820421567BA8005F1888 /* AlbunsInteractor.swift */,
 				AC42820521567BA8005F1888 /* AlbunsConfigurator.swift */,
+				AC42820F21569F9F005F1888 /* AlbunsViewController+UITableView.swift */,
 			);
 			path = Albuns;
+			sourceTree = "<group>";
+		};
+		AC42820E21569F0F005F1888 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ACC6AE5721546A42001A21E7 /* AlbumTableViewCell.xib */,
+				AC4282112156A0B1005F1888 /* AlbumTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AC4282132156A345005F1888 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AC4282142156A359005F1888 /* UITableViewCellIdentifier.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		ACA562D121545A4C001F560C = {
@@ -249,7 +281,6 @@
 				ACA562E721545A53001F560C /* Assets.xcassets */,
 				ACA562E921545A53001F560C /* LaunchScreen.storyboard */,
 				ACA562EC21545A53001F560C /* Info.plist */,
-				ACC6AE5721546A42001A21E7 /* AlbumCell.xib */,
 			);
 			path = iosSkillstest;
 			sourceTree = "<group>";
@@ -325,7 +356,7 @@
 				ACA562EB21545A53001F560C /* LaunchScreen.storyboard in Resources */,
 				ACA562E821545A53001F560C /* Assets.xcassets in Resources */,
 				ACA562E321545A4D001F560C /* Main.storyboard in Resources */,
-				ACC6AE5821546A42001A21E7 /* AlbumCell.xib in Resources */,
+				ACC6AE5821546A42001A21E7 /* AlbumTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +427,9 @@
 				AC4281FB215677FD005F1888 /* UsersModels.swift in Sources */,
 				AC4281E321566160005F1888 /* LoginInteractor.swift in Sources */,
 				AC4281D821564D97005F1888 /* User.swift in Sources */,
+				AC42821021569F9F005F1888 /* AlbunsViewController+UITableView.swift in Sources */,
 				AC42820621567BA8005F1888 /* AlbunsPresenter.swift in Sources */,
+				AC4282122156A0B1005F1888 /* AlbumTableViewCell.swift in Sources */,
 				AC4281C92155D296005F1888 /* SignUPInteractor.swift in Sources */,
 				AC4281C52155D296005F1888 /* SignUPPresenter.swift in Sources */,
 				AC4281F121567769005F1888 /* TabBarConfigurator.swift in Sources */,
@@ -404,9 +437,11 @@
 				AC4281EF21567769005F1888 /* TabBarViewController.swift in Sources */,
 				AC4281C72155D296005F1888 /* SignUPModels.swift in Sources */,
 				AC4281E421566160005F1888 /* LoginConfigurator.swift in Sources */,
+				AC4282152156A359005F1888 /* UITableViewCellIdentifier.swift in Sources */,
 				AC4281FA215677FD005F1888 /* UsersRouter.swift in Sources */,
 				AC4281CE2155DFC2005F1888 /* UIViewController+SwiftMessages.swift in Sources */,
 				AC4281E121566160005F1888 /* LoginModels.swift in Sources */,
+				AC71A9222156B6BC000CC37B /* UserViewController+UITableView.swift in Sources */,
 				AC4281FE215677FD005F1888 /* UsersConfigurator.swift in Sources */,
 				AC4281EC21567769005F1888 /* TabBarPresenter.swift in Sources */,
 				AC4281C82155D296005F1888 /* SignUPViewController.swift in Sources */,
@@ -416,6 +451,7 @@
 				AC4281DF21566160005F1888 /* LoginPresenter.swift in Sources */,
 				AC4281C62155D296005F1888 /* SignUPRouter.swift in Sources */,
 				AC42820921567BA8005F1888 /* AlbunsViewController.swift in Sources */,
+				AC42820D215681F6005F1888 /* Album.swift in Sources */,
 				AC42820821567BA8005F1888 /* AlbunsModels.swift in Sources */,
 				ACA562DE21545A4D001F560C /* AppDelegate.swift in Sources */,
 				AC4281F9215677FD005F1888 /* UsersPresenter.swift in Sources */,
