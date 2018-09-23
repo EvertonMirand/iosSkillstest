@@ -11,8 +11,6 @@ target 'iosSkillstest' do
   pod 'SkyFloatingLabelTextField'
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
-  pod 'SwiftLint'
   pod 'SwiftMessages'
   pod 'RealmSwift'
-  pod 'Result'
 end

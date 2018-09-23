@@ -48,8 +48,6 @@ class LoginViewController: UIViewController, LoginViewControllerInput {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        emailText.text = "a@a.com"
-        passwordText.text = "a"
     }
 
     // MARK: Requests

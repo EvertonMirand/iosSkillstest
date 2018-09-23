@@ -10,8 +10,6 @@
 //
 //  Type "usecase" for some magic!
 
-import Result
-
 struct AlbunsScene {
 
     struct FetchAlbuns {

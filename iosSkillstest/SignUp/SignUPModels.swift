@@ -10,8 +10,6 @@
 //
 //  Type "usecase" for some magic!
 
-import Result
-
 struct SignUPScene {
 
     struct SignUP {
