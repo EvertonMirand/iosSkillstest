@@ -17,7 +17,7 @@ extension UsersViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredUsers = users.filter { (user) -> Bool in
-            user.email.lowercased().contains(searchText.lowercased())
+            user.name.lowercased().contains(searchText.lowercased())
         }
         tablewView.reloadData()
     }
