@@ -9,15 +9,15 @@
 //  https://github.com/HelmMobile/clean-swift-templates
 
 protocol TabBarInteractorInput {
-    
+
 }
 
 protocol TabBarInteractorOutput {
-    
+
 }
 
 protocol TabBarDataSource {
-    
+
 }
 
 protocol TabBarDataDestination {
@@ -26,11 +26,9 @@ protocol TabBarDataDestination {
 
 class TabBarInteractor: TabBarInteractorInput, TabBarDataSource, TabBarDataDestination {
     var user: User!
-    
-    
+
     var output: TabBarInteractorOutput?
-    
+
     // MARK: Business logic
-    
 
 }

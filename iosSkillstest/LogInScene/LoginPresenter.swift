@@ -18,11 +18,11 @@ protocol LoginPresenterOutput: class {
 }
 
 class LoginPresenter: LoginPresenterInput {
-    
+
     weak var output: LoginPresenterOutput?
-    
+
     // MARK: Presentation logic
-    
+
     func presentLogin(response: LoginScene.Login.Response) {
         switch response.state {
         case .sucess(message: let message):

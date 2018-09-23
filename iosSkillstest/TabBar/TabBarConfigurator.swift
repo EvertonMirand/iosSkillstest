@@ -20,23 +20,23 @@ extension TabBarPresenter: TabBarInteractorOutput {
 
 class TabBarConfigurator {
     // MARK: Object lifecycle
-    
+
     static let sharedInstance = TabBarConfigurator()
-    
+
     private init() {}
-    
+
     // MARK: Configuration
-    
+
     func configure(viewController: TabBarViewController) {
-        
+
         let presenter = TabBarPresenter()
         presenter.output = viewController
-        
+
         let interactor = TabBarInteractor()
         interactor.output = presenter
-        
+
         let router = TabBarRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)
-        
+
         viewController.output = interactor
         viewController.router = router
     }

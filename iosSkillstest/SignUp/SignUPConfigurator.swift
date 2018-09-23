@@ -20,23 +20,23 @@ extension SignUPPresenter: SignUPInteractorOutput {
 
 class SignUPConfigurator {
     // MARK: Object lifecycle
-    
+
     static let sharedInstance = SignUPConfigurator()
-    
+
     private init() {}
-    
+
     // MARK: Configuration
-    
+
     func configure(viewController: SignUPViewController) {
-        
+
         let presenter = SignUPPresenter()
         presenter.output = viewController
-        
+
         let interactor = SignUPInteractor()
         interactor.output = presenter
-        
+
         let router = SignUPRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)
-        
+
         viewController.output = interactor
         viewController.router = router
     }

@@ -11,11 +11,11 @@
 import UIKit
 
 protocol TabBarRouterInput {
-    
+
 }
 
 protocol TabBarRouterDataSource: class {
-    
+
 }
 
 protocol TabBarRouterDataDestination: class {
@@ -23,29 +23,29 @@ protocol TabBarRouterDataDestination: class {
 }
 
 class TabBarRouter: TabBarRouterInput {
-    
+
     weak var viewController: TabBarViewController!
     weak private var dataSource: TabBarRouterDataSource!
     weak var dataDestination: TabBarRouterDataDestination!
-    
+
     init(viewController: TabBarViewController, dataSource: TabBarRouterDataSource, dataDestination: TabBarRouterDataDestination) {
         self.viewController = viewController
         self.dataSource = dataSource
         self.dataDestination = dataDestination
     }
-    
+
     // MARK: Navigation
-    
+
     // MARK: Communication
-    
+
     func passDataToNextScene(for segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
     }
-    
+
     func passDataToUsersVC() {
         viewController.childViewControllers.forEach { (viewController) in
             if let navController = viewController as? UINavigationController {
-                navController.childViewControllers.forEach{ (vc) in
+                navController.childViewControllers.forEach { (vc) in
                     if let userViewController = vc as? UsersViewController {
                         userViewController.router?.dataDestination.user = dataDestination.user
                     }

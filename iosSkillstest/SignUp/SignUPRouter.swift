@@ -11,35 +11,34 @@
 import UIKit
 
 protocol SignUPRouterInput {
-    
+
 }
 
 protocol SignUPRouterDataSource: class {
-    
+
 }
 
 protocol SignUPRouterDataDestination: class {
-    
+    var editUser: User? { get set }
 }
 
 class SignUPRouter: SignUPRouterInput {
-    
+
     weak var viewController: SignUPViewController!
     weak private var dataSource: SignUPRouterDataSource!
     weak var dataDestination: SignUPRouterDataDestination!
-    
+
     init(viewController: SignUPViewController, dataSource: SignUPRouterDataSource, dataDestination: SignUPRouterDataDestination) {
         self.viewController = viewController
         self.dataSource = dataSource
         self.dataDestination = dataDestination
     }
-    
+
     // MARK: Navigation
-    
+
     // MARK: Communication
-    
+
     func passDataToNextScene(for segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
-        
     }
 }

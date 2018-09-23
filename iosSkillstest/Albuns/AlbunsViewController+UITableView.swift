@@ -20,6 +20,9 @@ extension AlbunsViewController: UITableViewDataSource {
         guard let albumCell = cell as? AlbumTableViewCell else {
             fatalError("Could not deque cell \(AlbumTableViewCell.cellIdentifier)")
         }
+        albumCell.textLabel?.adjustsFontSizeToFitWidth = true
+        albumCell.textLabel?.numberOfLines = 0
+        albumCell.textLabel?.minimumScaleFactor = 0.5
         let albumRow = albunsRow[indexPath.row]
         albumCell.albumTitle.text = albumRow.title
         let url = URL(string: albumRow.photoURL)
@@ -30,5 +33,5 @@ extension AlbunsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albunsRow.count
     }
-    
+
 }

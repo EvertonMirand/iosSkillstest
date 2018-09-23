@@ -23,35 +23,37 @@ protocol LoginViewControllerOutput {
 }
 
 class LoginViewController: UIViewController, LoginViewControllerInput {
-    
-    
+
     // MARK: Propeties
-    
+
     var output: LoginViewControllerOutput?
     var router: LoginRouter?
-    
+
     // MARK: Outlets
-    
+
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailText: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordText: SkyFloatingLabelTextField!
-    
+
     // MARK: Object lifecycle
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         LoginConfigurator.sharedInstance.configure(viewController: self)
     }
-    
+
     // MARK: View lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
         emailText.text = "a@a.com"
         passwordText.text = "a"
     }
-    
+
     // MARK: Requests
-    
+
     func login() {
         let email = clearText(from: emailText)
         guard email.isValidEmail() else {
@@ -62,9 +64,9 @@ class LoginViewController: UIViewController, LoginViewControllerInput {
         SVProgressHUD.show()
         output?.login(request: request)
     }
-    
+
     // MARK: Display logic
-    
+
     func displaySucessLogin(viewModel: LoginScene.Login.ViewModel) {
         SVProgressHUD.dismiss()
         displaySuccessfuAlert(with: viewModel.message)
@@ -75,14 +77,36 @@ class LoginViewController: UIViewController, LoginViewControllerInput {
         SVProgressHUD.dismiss()
         displayErrorAlert(with: viewModel.message)
     }
-    
-    
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
+
+// MARK: IBAction
 
 extension LoginViewController {
 
     @IBAction func login(_ sender: Any) {
         login()
+    }
+}
+
+// MARK: Text Field
+
+extension LoginViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailText:
+            passwordText.becomeFirstResponder()
+        case passwordText:
+            passwordText.resignFirstResponder()
+            loginButton.sendActions(for: .touchUpInside)
+        default:
+            passwordText.resignFirstResponder()
+        }
+        return false
     }
 }
 

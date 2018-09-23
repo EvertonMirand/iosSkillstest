@@ -15,7 +15,7 @@ class User: Object {
     @objc dynamic var name: String!
     @objc dynamic var email: String!
     @objc dynamic var password: String!
-    
+
     override class func primaryKey() -> String? {
         return "email"
     }

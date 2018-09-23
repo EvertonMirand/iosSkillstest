@@ -22,43 +22,44 @@ protocol AlbunsViewControllerOutput {
 }
 
 class AlbunsViewController: UIViewController, AlbunsViewControllerInput {
-    
-    // Mark: Propeties
-    
+
+    // MARK: Propeties
+
     var output: AlbunsViewControllerOutput?
     var router: AlbunsRouter?
     var albunsRow: [AlbunsScene.FetchAlbuns.ViewModel.AlbumRow] = []
-    
-    // Mark: Outlets
-    
+
+    // MARK: Outlets
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     // MARK: Object lifecycle
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         AlbunsConfigurator.sharedInstance.configure(viewController: self)
     }
-    
+
     // MARK: View lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsSelection = false
         registerCells()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchAlbuns()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         albunsRow = []
     }
-    
+
     // MARK: Requests
-    
+
     func fetchAlbuns() {
         SVProgressHUD.show()
         let request = AlbunsScene.FetchAlbuns.Request()

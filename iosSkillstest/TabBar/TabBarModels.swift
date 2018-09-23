@@ -11,5 +11,5 @@
 //  Type "usecase" for some magic!
 
 struct TabBarScene {
-    
+
 }

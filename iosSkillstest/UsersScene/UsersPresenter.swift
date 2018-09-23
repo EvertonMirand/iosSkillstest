@@ -11,27 +11,29 @@
 protocol UsersPresenterInput {
     func presentLoggedUser(response: UsersScene.GetLoggedUser.Response)
     func presentUsers(response: UsersScene.FetchUsers.Response)
+    func presentDeletedUser(response: UsersScene.DeleteUser.Response)
 }
 
 protocol UsersPresenterOutput: class {
     func displayLoggedUser(viewModel: UsersScene.GetLoggedUser.ViewModel)
     func displayUsers(viewModel: UsersScene.FetchUsers.ViewModel)
-    func displayErrorToFetchUsers(error: String)
+    func displayError(error: String)
+    func displaySucessDeletedUser(viewModel: UsersScene.DeleteUser.ViewModel)
 }
 
 class UsersPresenter: UsersPresenterInput {
-    
+
     weak var output: UsersPresenterOutput?
-    
+
     // MARK: Presentation logic
-    
+
     func presentLoggedUser(response: UsersScene.GetLoggedUser.Response) {
         let user = response.user
         let loggedUser = UsersScene.GetLoggedUser.ViewModel.User(email: user.email, name: user.name)
         let viewModel = UsersScene.GetLoggedUser.ViewModel(user: loggedUser)
         output?.displayLoggedUser(viewModel: viewModel)
     }
-    
+
     func presentUsers(response: UsersScene.FetchUsers.Response) {
         switch response.state {
 
@@ -42,8 +44,19 @@ class UsersPresenter: UsersPresenterInput {
             let viewModel = UsersScene.FetchUsers.ViewModel(users: usersRow)
             output?.displayUsers(viewModel: viewModel)
         case .failure(let errorMessage):
-            output?.displayErrorToFetchUsers(error: errorMessage)
+            output?.displayError(error: errorMessage)
         }
     }
-    
+
+    func presentDeletedUser(response: UsersScene.DeleteUser.Response) {
+        switch response.state {
+
+        case .sucess(let message, let index):
+            let viewModel = UsersScene.DeleteUser.ViewModel(message: message, index: index)
+            output?.displaySucessDeletedUser(viewModel: viewModel)
+        case .failure(let errorMessage):
+            output?.displayError(error: errorMessage)
+        }
+    }
+
 }

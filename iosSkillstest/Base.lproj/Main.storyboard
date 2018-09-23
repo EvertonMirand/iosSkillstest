@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pfG-An-ksB">
-                                <rect key="frame" x="16" y="249.5" width="343" height="168"/>
+                                <rect key="frame" x="16" y="258.5" width="343" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y1W-Ck-KxM" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -31,9 +31,12 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="e-mail"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="exemplo@email.com"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Ng2-f5-hDa"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HKb-vF-Z8t" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="69" width="343" height="39"/>
+                                        <rect key="frame" x="0.0" y="60" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
@@ -41,9 +44,12 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="senha"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="senha"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="8C6-Lf-963"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIO-4F-nMO">
-                                        <rect key="frame" x="86" y="138" width="171.5" height="30"/>
+                                        <rect key="frame" x="86" y="120" width="171.5" height="30"/>
                                         <color key="backgroundColor" red="0.35294117650000001" green="0.85882352939999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="entrar">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,13 +92,14 @@
                     <navigationItem key="navigationItem" id="RZQ-Dt-gpj"/>
                     <connections>
                         <outlet property="emailText" destination="Y1W-Ck-KxM" id="qkl-Vy-CL7"/>
+                        <outlet property="loginButton" destination="hIO-4F-nMO" id="6Qe-d5-Cj4"/>
                         <outlet property="passwordText" destination="HKb-vF-Z8t" id="GC2-Sd-ftA"/>
                         <segue destination="SLF-r4-orC" kind="presentation" identifier="TabBarScene" id="fKf-nZ-vdG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="791"/>
+            <point key="canvasLocation" x="905" y="790"/>
         </scene>
         <!--SignUP View Controller-->
         <scene sceneID="pHb-na-wKg">
@@ -103,10 +110,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="bRe-BS-jA0">
-                                <rect key="frame" x="16" y="219.5" width="343" height="228"/>
+                                <rect key="frame" x="16" y="228.5" width="343" height="210"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YgA-Pb-PCw" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
@@ -115,9 +122,12 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="e-mail"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="exemplo@email.com"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Th9-Q1-7lW" id="eMT-1A-Mu6"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pe4-vt-WPh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="69" width="343" height="39"/>
+                                        <rect key="frame" x="0.0" y="60" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="name"/>
@@ -126,15 +136,24 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="nome"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="nome"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Th9-Q1-7lW" id="s1J-gW-ynT"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o8o-Dl-PVn" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="138" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="senha"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Th9-Q1-7lW" id="ygd-Jr-5nA"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTl-JT-X0q">
-                                        <rect key="frame" x="86" y="198" width="171.5" height="30"/>
+                                        <rect key="frame" x="86" y="180" width="171.5" height="30"/>
                                         <color key="backgroundColor" red="0.35294117650000001" green="0.85882352939999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="salvar">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -169,13 +188,14 @@
                         <outlet property="emailTextField" destination="YgA-Pb-PCw" id="jrN-82-K24"/>
                         <outlet property="nameTextField" destination="Pe4-vt-WPh" id="n2G-8w-Iwn"/>
                         <outlet property="passwordTextField" destination="o8o-Dl-PVn" id="gjD-jX-KnI"/>
+                        <outlet property="saveButton" destination="NTl-JT-X0q" id="oA7-5X-HTe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aa2-Og-8PP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2975" y="770"/>
+            <point key="canvasLocation" x="3166" y="790"/>
         </scene>
-        <!--Title-->
+        <!--Home-->
         <scene sceneID="0Vr-NQ-jAR">
             <objects>
                 <viewController id="dru-tq-pff" customClass="UsersViewController" customModule="iosSkillstest" customModuleProvider="target" sceneMemberID="viewController">
@@ -229,7 +249,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bpz-Ia-wBe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="2Ft-2c-5GG">
+                    <navigationItem key="navigationItem" title="Home" id="2Ft-2c-5GG">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="30W-QV-hYp">
                             <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -238,18 +258,19 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kJt-WE-LVi">
                             <connections>
-                                <segue destination="Th9-Q1-7lW" kind="show" id="Nra-sE-Z16"/>
+                                <action selector="addUser:" destination="dru-tq-pff" id="96S-Io-m4P"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="DHs-te-rqB" id="NSs-Rv-VUq"/>
                         <outlet property="tablewView" destination="Jaq-HB-U1Q" id="rGw-jY-e1T"/>
+                        <segue destination="Th9-Q1-7lW" kind="show" identifier="AddUserSegue" id="7S6-zx-NpY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Si6-Fj-gBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2383" y="1617"/>
+            <point key="canvasLocation" x="2383" y="1639"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1mW-qZ-2Pl">
@@ -295,7 +316,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ABL-ut-BY6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Lista de Albums" id="7d7-Wz-r4x"/>
+                    <tabBarItem key="tabBarItem" title="Lista de Albums" image="album-icon" selectedImage="album-icon" id="7d7-Wz-r4x">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="gKg-hv-GZx" id="Etb-qN-V8J"/>
                     </connections>
@@ -323,11 +346,13 @@
             </objects>
             <point key="canvasLocation" x="904.79999999999995" y="1639.4302848575715"/>
         </scene>
-        <!--Item-->
+        <!--home-->
         <scene sceneID="N5C-9e-W4x">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XoJ-kT-Smy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hqu-pl-PG5"/>
+                    <tabBarItem key="tabBarItem" title="home" image="home-icon" selectedImage="home-icon" id="hqu-pl-PG5">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ApM-Ci-7ym">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -343,7 +368,11 @@
             <point key="canvasLocation" x="1607" y="1639"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="album-icon" width="16" height="16"/>
+        <image name="home-icon" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nra-sE-Z16"/>
+        <segue reference="uth-iJ-RCm"/>
     </inferredMetricsTieBreakers>
 </document>

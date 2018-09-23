@@ -15,10 +15,12 @@ import SVProgressHUD
 protocol SignUPViewControllerInput {
     func displaySucess(viewModel: SignUPScene.SignUP.ViewModel)
     func displayFailure(viewModel: SignUPScene.SignUP.ViewModel)
+    func displayEditValues(viewModel: SignUPScene.EditValue.ViewModel)
 }
 
 protocol SignUPViewControllerOutput {
     func singUPUser(request: SignUPScene.SignUP.Request)
+    func editValues(request: SignUPScene.EditValue.Request)
 }
 
 class SignUPViewController: UIViewController, SignUPViewControllerInput {
@@ -27,13 +29,13 @@ class SignUPViewController: UIViewController, SignUPViewControllerInput {
 
     var output: SignUPViewControllerOutput?
     var router: SignUPRouter?
-    var user: User?
 
     // MARK: Outlets
 
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var saveButton: UIButton!
 
     // MARK: Object lifecycle
 
@@ -43,17 +45,32 @@ class SignUPViewController: UIViewController, SignUPViewControllerInput {
     }
 
     // MARK: View lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        editValue()
     }
-    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        emailTextField.isUserInteractionEnabled = true
+        emailTextField.text = ""
+        nameTextField.text = ""
+        passwordTextField.text = ""
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
     // MARK: Requests
-    
+
     func signUPUser() {
         let email = clearText(from: emailTextField, and: "O email não pode ser vazio.")
         guard email.isValidEmail() else {
@@ -66,19 +83,52 @@ class SignUPViewController: UIViewController, SignUPViewControllerInput {
         output?.singUPUser(request: request)
     }
 
+    func editValue() {
+        let request = SignUPScene.EditValue.Request()
+        output?.editValues(request: request)
+    }
+
     // MARK: Display logic
-    
+
     func displaySucess(viewModel: SignUPScene.SignUP.ViewModel) {
         SVProgressHUD.dismiss()
         displaySuccessfuAlert(with: viewModel.message)
         navigationController?.popViewController(animated: true)
     }
-    
+
     func displayFailure(viewModel: SignUPScene.SignUP.ViewModel) {
         SVProgressHUD.dismiss()
         displayErrorAlert(with: viewModel.message)
     }
+
+    func displayEditValues(viewModel: SignUPScene.EditValue.ViewModel) {
+        emailTextField.isUserInteractionEnabled = false
+        let user = viewModel.user
+        emailTextField.text = user.email
+        nameTextField.text = user.name
+        passwordTextField.text = user.password
+    }
 }
+
+extension SignUPViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            nameTextField.becomeFirstResponder()
+        case nameTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            passwordTextField.resignFirstResponder()
+            saveButton.sendActions(for: .touchUpInside)
+        default:
+            passwordTextField.resignFirstResponder()
+        }
+        return false
+    }
+}
+
+// MARK: IBActions
 
 extension SignUPViewController {
 
@@ -86,8 +136,6 @@ extension SignUPViewController {
         signUPUser()
     }
 }
-
-
 
 //This should be on configurator but for some reason storyboard doesn't detect ViewController's name if placed there
 extension SignUPViewController: SignUPPresenterOutput {

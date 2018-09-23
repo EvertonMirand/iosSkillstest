@@ -11,38 +11,37 @@
 import UIKit
 
 protocol TabBarViewControllerInput {
-    
+
 }
 
 protocol TabBarViewControllerOutput {
-    
+
 }
 
 class TabBarViewController: UITabBarController, TabBarViewControllerInput {
-    
+
     var output: TabBarViewControllerOutput?
     var router: TabBarRouter?
-    
+
     // MARK: Object lifecycle
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         TabBarConfigurator.sharedInstance.configure(viewController: self)
     }
-    
+
     // MARK: View lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         router?.passDataToUsersVC()
-        
+
     }
-    
+
     // MARK: Requests
-    
-    
+
     // MARK: Display logic
-    
+
 }
 
 //This should be on configurator but for some reason storyboard doesn't detect ViewController's name if placed there

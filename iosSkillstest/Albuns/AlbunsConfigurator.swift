@@ -20,23 +20,23 @@ extension AlbunsPresenter: AlbunsInteractorOutput {
 
 class AlbunsConfigurator {
     // MARK: Object lifecycle
-    
+
     static let sharedInstance = AlbunsConfigurator()
-    
+
     private init() {}
-    
+
     // MARK: Configuration
-    
+
     func configure(viewController: AlbunsViewController) {
-        
+
         let presenter = AlbunsPresenter()
         presenter.output = viewController
-        
+
         let interactor = AlbunsInteractor()
         interactor.output = presenter
-        
+
         let router = AlbunsRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)
-        
+
         viewController.output = interactor
         viewController.router = router
     }

@@ -10,17 +10,10 @@ import UIKit
 import RealmSwift
 import IQKeyboardManagerSwift
 
-#if !swift(>=4.2)
-extension UIApplication {
-    typealias LaunchOptionsKey = UIApplicationLaunchOptionsKey
-}
-#endif
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
@@ -50,6 +43,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
     }
 }
-
-
-

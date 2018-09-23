@@ -19,11 +19,11 @@ protocol AlbunsInteractorOutput {
 }
 
 protocol AlbunsDataSource {
-    
+
 }
 
 protocol AlbunsDataDestination {
-    
+
 }
 
 protocol AlamofireAlbumUrl {
@@ -38,19 +38,19 @@ extension AlamofireAlbumUrl {
 }
 
 class AlbunsInteractor: AlbunsInteractorInput, AlbunsDataSource, AlbunsDataDestination, AlamofireAlbumUrl {
-    
+
     var output: AlbunsInteractorOutput?
     var albuns: [Album] = []
-    
+
     // MARK: Business logic
-    
+
     func fetchAlbuns(request: AlbunsScene.FetchAlbuns.Request) {
         var state = AlbunsScene.FetchAlbuns.Response.State.failure(errorMessage: "Não foi possivel receber os albuns")
-        
+
         Alamofire.request(albunsURL)
             .responseJSON { (response) in
                 switch response.result {
-                    
+
                 case .success:
                     if let albuns = try? JSONDecoder().decode([Album].self, from: response.data!) {
                         self.albuns = albuns
@@ -62,9 +62,7 @@ class AlbunsInteractor: AlbunsInteractorInput, AlbunsDataSource, AlbunsDataDesti
                 let response = AlbunsScene.FetchAlbuns.Response(state: state)
                 self.output?.presentAlbuns(response: response)
         }
-        
-        
+
     }
-    
 
 }

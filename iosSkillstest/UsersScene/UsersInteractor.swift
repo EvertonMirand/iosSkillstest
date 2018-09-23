@@ -13,15 +13,18 @@ import RealmSwift
 protocol UsersInteractorInput {
     func getLoggedUser(request: UsersScene.GetLoggedUser.Request)
     func fetchUsers(request: UsersScene.FetchUsers.Request)
+    func deleteUser(request: UsersScene.DeleteUser.Request)
+    func editUser(with email: String)
 }
 
 protocol UsersInteractorOutput {
     func presentLoggedUser(response: UsersScene.GetLoggedUser.Response)
     func presentUsers(response: UsersScene.FetchUsers.Response)
+    func presentDeletedUser(response: UsersScene.DeleteUser.Response)
 }
 
 protocol UsersDataSource {
-    
+    var editUser: User? { get }
 }
 
 protocol UsersDataDestination {
@@ -29,33 +32,62 @@ protocol UsersDataDestination {
 }
 
 class UsersInteractor: UsersInteractorInput, UsersDataSource, UsersDataDestination {
-    
-    
-    
+
+    var editUser: User?
     var output: UsersInteractorOutput?
     var user: User!
-    
+    var users: [User] = []
+
     // MARK: Business logic
-    
+
     func getLoggedUser(request: UsersScene.GetLoggedUser.Request) {
         let response = UsersScene.GetLoggedUser.Response(user: user)
         output?.presentLoggedUser(response: response)
     }
-    
+
     func fetchUsers(request: UsersScene.FetchUsers.Request) {
-        var state = UsersScene.FetchUsers.Response.State.failure(errorMessage: "Não foi possivel carregar os outros usuarios")
+        var state = UsersScene.FetchUsers.Response.State.failure(errorMessage: "Não foi possivel carregar os usuarios")
         do {
             let realm = try Realm()
             let users = realm.objects(User.self).filter { (user) -> Bool in
                 return user.email != self.user.email
             } as [User]
+            self.users = users
             state = .sucess(users)
         } catch {
-            
+
         }
         let response = UsersScene.FetchUsers.Response(state: state)
         output?.presentUsers(response: response)
     }
-    
 
+    func deleteUser(request: UsersScene.DeleteUser.Request) {
+        var state = UsersScene.DeleteUser.Response.State.failure(errorMessage: "Não foi deletar o usuario")
+        var indexToDelete = -1
+        let userToDelete = users.enumerated().filter { (index, user) -> Bool in
+            if user.email == request.selectedUserEmail {
+                indexToDelete = index
+                return true
+            }
+            return false
+        }.first?.element
+        if let user = userToDelete {
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    realm.delete(user)
+                }
+                users.remove(at: indexToDelete)
+                state = .sucess(message: "Usuario deletado com sucesso.", index: indexToDelete)
+            } catch { }
+        }
+        let response = UsersScene.DeleteUser.Response(state: state)
+        output?.presentDeletedUser(response: response)
+    }
+
+    func editUser(with email: String) {
+        editUser = users.filter {
+            $0.email == email
+        }.first
+    }
 }

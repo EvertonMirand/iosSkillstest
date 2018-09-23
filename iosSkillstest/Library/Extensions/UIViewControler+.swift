@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    
+
     func clearText(from textField: UITextField, and errorMessage: String = "O campo não pode ser vazio!") -> String {
         if textField.text.isNil {
             displayErrorAlert(with: errorMessage)
@@ -22,8 +22,8 @@ extension UIViewController {
         }
         return text
     }
-    
-    func validateEmailFormat(_ email: String) -> Bool{
+
+    func validateEmailFormat(_ email: String) -> Bool {
         if email.isValidEmail() {
             return true
         } else {

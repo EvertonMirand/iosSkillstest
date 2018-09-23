@@ -18,11 +18,11 @@ protocol AlbunsPresenterOutput: class {
 }
 
 class AlbunsPresenter: AlbunsPresenterInput {
-    
+
     weak var output: AlbunsPresenterOutput?
 
     // MARK: Presentation logic
-    
+
     func presentAlbuns(response: AlbunsScene.FetchAlbuns.Response) {
         switch response.state {
         case .sucess(let albuns):
@@ -37,5 +37,3 @@ class AlbunsPresenter: AlbunsPresenterInput {
         }
     }
 }
-
-

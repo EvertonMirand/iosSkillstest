@@ -15,12 +15,12 @@ import Result
 struct LoginScene {
 
     struct Login {
-        
+
         struct Request {
             let email: String
             let password: String
         }
-        
+
         struct Response {
             enum State {
                 case sucess(message: String)
@@ -28,7 +28,7 @@ struct LoginScene {
             }
             let state: State
         }
-        
+
         struct ViewModel {
             let message: String
         }

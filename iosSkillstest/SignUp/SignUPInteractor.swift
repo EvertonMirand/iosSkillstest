@@ -9,45 +9,99 @@
 //  https://github.com/HelmMobile/clean-swift-templates
 
 import RealmSwift
+import Realm
 
 protocol SignUPInteractorInput {
     func singUPUser(request: SignUPScene.SignUP.Request)
+    func editValues(request: SignUPScene.EditValue.Request)
 }
 
 protocol SignUPInteractorOutput {
     func presentSignUP(reponse: SignUPScene.SignUP.Response)
+    func presentEditValues(response: SignUPScene.EditValue.Response)
 }
 
 protocol SignUPDataSource {
-    
+
 }
 
 protocol SignUPDataDestination {
-    
+    var editUser: User? { get set }
 }
 
 class SignUPInteractor: SignUPInteractorInput, SignUPDataSource, SignUPDataDestination {
-    
+    var editUser: User?
     var output: SignUPInteractorOutput?
-    
+    var emails: [String]
+
+    init() {
+        do {
+            let realm = try Realm()
+            emails = realm.objects(User.self).map {
+                $0.email
+            }
+        } catch {
+            emails = []
+        }
+    }
+
     // MARK: Business logic
-    
+
     func singUPUser(request: SignUPScene.SignUP.Request) {
+        var state: SignUPScene.SignUP.Response.State!
+        if editUser != nil {
+            state = editUser(request: request)
+        } else {
+            state = addUser(request: request)
+        }
+        let response = SignUPScene.SignUP.Response(state: state)
+        output?.presentSignUP(reponse: response)
+    }
+
+    func editUser(request: SignUPScene.SignUP.Request) -> SignUPScene.SignUP.Response.State {
+        var state = SignUPScene.SignUP.Response.State.failure(errorMessage: "Erro ao editar usuario")
+
         let user = User()
         user.name = request.name
         user.email = request.email.lowercased()
         user.password = request.password
-        var state = SignUPScene.SignUP.Response.State.failure(errorMessage: "Erro ao cadastrar usuario")
+
         do {
-            let realm = try Realm(configuration: .defaultConfiguration)
+            let realm = try Realm()
             try realm.write {
-                realm.add(user)
+                realm.add(user, update: true)
+                state = SignUPScene.SignUP.Response.State.sucess(message: "Usuario editado com sucesso!")
             }
-            state = SignUPScene.SignUP.Response.State.sucess(message: "Usuario cadastrado com sucesso!")
-        } catch {
-            print(error)
+        } catch { }
+
+        return state
+    }
+
+    func addUser(request: SignUPScene.SignUP.Request) -> SignUPScene.SignUP.Response.State {
+        var state = SignUPScene.SignUP.Response.State.failure(errorMessage: "Erro ao cadastrar usuario")
+        if !emails.contains(request.email) {
+            let user = User()
+            user.name = request.name
+            user.email = request.email.lowercased()
+            user.password = request.password
+
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    realm.add(user, update: false)
+                    state = SignUPScene.SignUP.Response.State.sucess(message: "Usuario cadastrado com sucesso!")
+                }
+            } catch { }
+        } else {
+            state = .failure(errorMessage: "Usuario já foi cadatrado com esse email")
         }
-        let response = SignUPScene.SignUP.Response(state: state)
-        output?.presentSignUP(reponse: response)
+        return state
+    }
+
+    func editValues(request: SignUPScene.EditValue.Request) {
+        if let user = editUser {
+            let response = SignUPScene.EditValue.Response(editUser: user)
+            output?.presentEditValues(response: response)
+        }
     }
 }

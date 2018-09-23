@@ -20,23 +20,23 @@ extension UsersPresenter: UsersInteractorOutput {
 
 class UsersConfigurator {
     // MARK: Object lifecycle
-    
+
     static let sharedInstance = UsersConfigurator()
-    
+
     private init() {}
-    
+
     // MARK: Configuration
-    
+
     func configure(viewController: UsersViewController) {
-        
+
         let presenter = UsersPresenter()
         presenter.output = viewController
-        
+
         let interactor = UsersInteractor()
         interactor.output = presenter
-        
+
         let router = UsersRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)
-        
+
         viewController.output = interactor
         viewController.router = router
     }

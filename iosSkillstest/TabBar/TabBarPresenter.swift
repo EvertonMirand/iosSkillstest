@@ -9,17 +9,17 @@
 //  https://github.com/HelmMobile/clean-swift-templates
 
 protocol TabBarPresenterInput {
-    
+
 }
 
 protocol TabBarPresenterOutput: class {
-    
+
 }
 
 class TabBarPresenter: TabBarPresenterInput {
-    
+
     weak var output: TabBarPresenterOutput?
-    
+
     // MARK: Presentation logic
-    
+
 }

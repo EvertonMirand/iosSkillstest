@@ -11,11 +11,11 @@
 import UIKit
 
 protocol UsersRouterInput {
-    
+
 }
 
 protocol UsersRouterDataSource: class {
-    
+    var editUser: User? { get }
 }
 
 protocol UsersRouterDataDestination: class {
@@ -23,25 +23,48 @@ protocol UsersRouterDataDestination: class {
 }
 
 class UsersRouter: UsersRouterInput {
-    
+
+    struct SegueIdentifiers {
+        static let addUserSegue = "AddUserSegue"
+    }
+
     var user: User!
-    
+
     weak var viewController: UsersViewController!
     weak private var dataSource: UsersRouterDataSource!
     weak var dataDestination: UsersRouterDataDestination!
-    
+
     init(viewController: UsersViewController, dataSource: UsersRouterDataSource, dataDestination: UsersRouterDataDestination) {
         self.viewController = viewController
         self.dataSource = dataSource
         self.dataDestination = dataDestination
     }
-    
+
     // MARK: Navigation
-    
+
+    func navigateToSignUpScene() {
+
+        viewController.performSegue(withIdentifier: SegueIdentifiers.addUserSegue, sender: self)
+    }
+
     // MARK: Communication
-    
+
     func passDataToNextScene(for segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
-        
+        switch segue.identifier {
+        case SegueIdentifiers.addUserSegue:
+            passDataSignUpScene(for: segue)
+            return
+        default:
+            return
+        }
+    }
+
+    func passDataSignUpScene(for segue: UIStoryboardSegue) {
+        if let signUpVC = segue.destination as? SignUPViewController {
+            if let user = dataSource.editUser {
+                signUpVC.router?.dataDestination.editUser = user
+            }
+        }
     }
 }

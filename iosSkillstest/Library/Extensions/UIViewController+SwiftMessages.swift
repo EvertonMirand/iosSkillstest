@@ -6,13 +6,12 @@
 //  Copyright © 2018 Everton Miranda Vitório. All rights reserved.
 //
 
-
 import Foundation
 import UIKit
 import SwiftMessages
 
 extension UIViewController {
-    
+
     func displayErrorAlert(with message: String, and duration: TimeInterval = 2.5) {
         let displayErrorAlert = MessageView.viewFromNib(layout: .messageView)
         displayErrorAlert.id = message
@@ -26,7 +25,7 @@ extension UIViewController {
         config.duration = .seconds(seconds: duration)
         SwiftMessages.show(config: config, view: displayErrorAlert)
     }
-    
+
     func displaySuccessfuAlert(with message: String, and duration: TimeInterval = 2.5) {
         let displaySuccessfuAlert = MessageView.viewFromNib(layout: .messageView)
         displaySuccessfuAlert.configureTheme(.success)
@@ -39,7 +38,5 @@ extension UIViewController {
         config.duration = .seconds(seconds: duration)
         SwiftMessages.show(config: config, view: displaySuccessfuAlert)
     }
-    
-    
-}
 
+}

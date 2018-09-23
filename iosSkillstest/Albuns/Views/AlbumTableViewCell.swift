@@ -17,7 +17,7 @@ class AlbumTableViewCell: UITableViewCell, UITableViewCellIdentifier {
 
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var albumTitle: UILabel!
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state

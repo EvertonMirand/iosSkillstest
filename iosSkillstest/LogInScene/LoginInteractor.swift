@@ -26,11 +26,11 @@ protocol LoginDataDestination {
 }
 
 class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestination {
-    
+
     var output: LoginInteractorOutput?
-    
+
     var logedUser: User?
-    
+
     // MARK: Business logic
 
     func login(request: LoginScene.Login.Request) {

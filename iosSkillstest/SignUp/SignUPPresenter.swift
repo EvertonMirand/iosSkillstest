@@ -10,21 +10,23 @@
 
 protocol SignUPPresenterInput {
     func presentSignUP(reponse: SignUPScene.SignUP.Response)
+    func presentEditValues(response: SignUPScene.EditValue.Response)
 }
 
 protocol SignUPPresenterOutput: class {
     func displaySucess(viewModel: SignUPScene.SignUP.ViewModel)
     func displayFailure(viewModel: SignUPScene.SignUP.ViewModel)
+    func displayEditValues(viewModel: SignUPScene.EditValue.ViewModel)
 }
 
 class SignUPPresenter: SignUPPresenterInput {
-    
+
     weak var output: SignUPPresenterOutput?
-    
+
     // MARK: Presentation logic
-    
+
     func presentSignUP(reponse: SignUPScene.SignUP.Response) {
-        
+
         switch reponse.state {
         case .sucess(message: let message):
             let viewModel = SignUPScene.SignUP.ViewModel(message: message)
@@ -34,5 +36,18 @@ class SignUPPresenter: SignUPPresenterInput {
             output?.displayFailure(viewModel: viewModel)
         }
     }
-    
+
+    func presentEditValues(response: SignUPScene.EditValue.Response) {
+        let viewModel = response.editUser.asViewModel()
+        output?.displayEditValues(viewModel: viewModel)
+    }
+
+}
+
+private extension User {
+
+    func asViewModel() -> SignUPScene.EditValue.ViewModel {
+        let user = SignUPScene.EditValue.ViewModel.User(name: name, email: email, password: password)
+        return SignUPScene.EditValue.ViewModel(user: user)
+    }
 }

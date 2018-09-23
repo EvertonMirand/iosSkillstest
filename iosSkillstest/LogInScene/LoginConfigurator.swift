@@ -20,23 +20,23 @@ extension LoginPresenter: LoginInteractorOutput {
 
 class LoginConfigurator {
     // MARK: Object lifecycle
-    
+
     static let sharedInstance = LoginConfigurator()
-    
+
     private init() {}
-    
+
     // MARK: Configuration
-    
+
     func configure(viewController: LoginViewController) {
-        
+
         let presenter = LoginPresenter()
         presenter.output = viewController
-        
+
         let interactor = LoginInteractor()
         interactor.output = presenter
-        
+
         let router = LoginRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)
-        
+
         viewController.output = interactor
         viewController.router = router
     }

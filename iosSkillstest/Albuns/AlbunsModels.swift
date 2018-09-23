@@ -15,9 +15,9 @@ import Result
 struct AlbunsScene {
 
     struct FetchAlbuns {
-        
+
         struct Request { }
-        
+
         struct Response {
 
             enum State {
@@ -26,14 +26,14 @@ struct AlbunsScene {
             }
             let state: State
         }
-        
+
         struct ViewModel {
-            
+
             struct AlbumRow {
                 let title: String
                 let photoURL: String
             }
-            
+
             let albumRows: [AlbumRow]
         }
     }

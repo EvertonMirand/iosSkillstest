@@ -14,7 +14,7 @@ public class Album: Decodable {
     var title: String!
     var imageUrl: String!
     var thumbnailUrl: String!
-    
+
     enum CodingKeys: String, CodingKey {
         case albumId
         case id
@@ -22,7 +22,7 @@ public class Album: Decodable {
         case imageUrl = "url"
         case thumbnailUrl
     }
-    
+
     required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         albumId = try values.decode(Int.self, forKey: CodingKeys.albumId)

@@ -11,7 +11,7 @@
 import UIKit
 
 protocol LoginRouterInput {
-    
+
 }
 
 protocol LoginRouterDataSource: class {
@@ -22,30 +22,30 @@ protocol LoginRouterDataDestination: class {
 }
 
 class LoginRouter: LoginRouterInput {
-    
+
     struct SegueIdentifiers {
         static let tabBarScene = "TabBarScene"
     }
-    
+
     weak var viewController: LoginViewController!
     weak private var dataSource: LoginRouterDataSource!
     weak var dataDestination: LoginRouterDataDestination!
-    
+
     init(viewController: LoginViewController, dataSource: LoginRouterDataSource, dataDestination: LoginRouterDataDestination) {
         self.viewController = viewController
         self.dataSource = dataSource
         self.dataDestination = dataDestination
     }
-    
+
     // MARK: Navigation
-    
+
     func navigateToTabBarScene() {
-        
+
         viewController.performSegue(withIdentifier: SegueIdentifiers.tabBarScene, sender: self)
     }
-    
+
     // MARK: Communication
-    
+
     func passDataToNextScene(for segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
         guard let identifier = segue.identifier else { return }
@@ -57,7 +57,7 @@ class LoginRouter: LoginRouterInput {
             return
         }
     }
-    
+
     func passDataTabBarScene(for segue: UIStoryboardSegue) {
         if let tabBarViewController = segue.destination as? TabBarViewController {
             tabBarViewController.router?.dataDestination.user = dataSource.logedUser

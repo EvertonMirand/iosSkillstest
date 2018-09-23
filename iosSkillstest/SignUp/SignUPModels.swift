@@ -15,24 +15,43 @@ import Result
 struct SignUPScene {
 
     struct SignUP {
-        
+
         struct Request {
             let email: String
             let password: String
             let name: String
         }
-        
+
         struct Response {
             let state: State
-            
+
             enum State {
                 case sucess(message: String)
                 case failure(errorMessage: String)
             }
         }
-        
+
         struct ViewModel {
             let message: String
+        }
+    }
+
+    struct EditValue {
+
+        struct Request { }
+
+        struct Response {
+            let editUser: User
+        }
+
+        struct ViewModel {
+
+            struct User {
+                let name: String
+                let email: String
+                let password: String
+            }
+            let user: User
         }
     }
 }
