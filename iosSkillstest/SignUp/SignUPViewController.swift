@@ -10,6 +10,7 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import SVProgressHUD
 
 protocol SignUPViewControllerInput {
     func displaySucess(viewModel: SignUPScene.SignUP.ViewModel)
@@ -61,16 +62,20 @@ class SignUPViewController: UIViewController, SignUPViewControllerInput {
         let password = clearText(from: passwordTextField, and: "A senha não pode ser vazia.")
         let name = clearText(from: nameTextField, and: "O nome não pode ser vazio.")
         let request = SignUPScene.SignUP.Request(email: email, password: password, name: name)
+        SVProgressHUD.show()
         output?.singUPUser(request: request)
     }
 
     // MARK: Display logic
     
     func displaySucess(viewModel: SignUPScene.SignUP.ViewModel) {
+        SVProgressHUD.dismiss()
         displaySuccessfuAlert(with: viewModel.message)
+        navigationController?.popViewController(animated: true)
     }
     
     func displayFailure(viewModel: SignUPScene.SignUP.ViewModel) {
+        SVProgressHUD.dismiss()
         displayErrorAlert(with: viewModel.message)
     }
 }

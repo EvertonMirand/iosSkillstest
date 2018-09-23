@@ -40,6 +40,7 @@ class LoginRouter: LoginRouterInput {
     // MARK: Navigation
     
     func navigateToTabBarScene() {
+        
         viewController.performSegue(withIdentifier: SegueIdentifiers.tabBarScene, sender: self)
     }
     

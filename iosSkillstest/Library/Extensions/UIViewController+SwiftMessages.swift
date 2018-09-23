@@ -23,7 +23,7 @@ extension UIViewController {
         displayErrorAlert.configureContent(title: "", body: message)
         var config = SwiftMessages.defaultConfig
         config.presentationStyle = .top
-        config.duration = .seconds(seconds: 2.0)
+        config.duration = .seconds(seconds: duration)
         SwiftMessages.show(config: config, view: displayErrorAlert)
     }
     
@@ -36,7 +36,7 @@ extension UIViewController {
         displaySuccessfuAlert.configureContent(title: "", body: message)
         var config = SwiftMessages.defaultConfig
         config.presentationStyle = .top
-        config.duration = .seconds(seconds: 2.0)
+        config.duration = .seconds(seconds: duration)
         SwiftMessages.show(config: config, view: displaySuccessfuAlert)
     }
     

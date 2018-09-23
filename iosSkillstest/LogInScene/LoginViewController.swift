@@ -11,6 +11,7 @@
 import UIKit
 import RealmSwift
 import SkyFloatingLabelTextField
+import SVProgressHUD
 
 protocol LoginViewControllerInput {
     func displaySucessLogin(viewModel: LoginScene.Login.ViewModel)
@@ -47,14 +48,6 @@ class LoginViewController: UIViewController, LoginViewControllerInput {
         super.viewDidLoad()
         emailText.text = "a@a.com"
         passwordText.text = "a"
-        do {
-            let realm = try Realm()
-            let logins = realm.objects(User.self)
-            print(logins)
-        } catch {
-            
-        }
-        
     }
     
     // MARK: Requests
@@ -66,17 +59,20 @@ class LoginViewController: UIViewController, LoginViewControllerInput {
         }
         let password = clearText(from: passwordText)
         let request = LoginScene.Login.Request(email: email, password: password)
+        SVProgressHUD.show()
         output?.login(request: request)
     }
     
     // MARK: Display logic
     
     func displaySucessLogin(viewModel: LoginScene.Login.ViewModel) {
+        SVProgressHUD.dismiss()
         displaySuccessfuAlert(with: viewModel.message)
         router?.navigateToTabBarScene()
     }
 
     func displayFailureLogin(viewModel: LoginScene.Login.ViewModel) {
+        SVProgressHUD.dismiss()
         displayErrorAlert(with: viewModel.message)
     }
     

@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (4.7.3)
   - IQKeyboardManagerSwift (6.1.1)
-  - KeychainAccess (3.1.1)
   - Kingfisher (4.8.1)
   - Realm (3.7.6):
     - Realm/Headers (= 3.7.6)
@@ -19,7 +18,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - IQKeyboardManagerSwift
-  - KeychainAccess
   - Kingfisher
   - RealmSwift
   - Result
@@ -32,7 +30,6 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - IQKeyboardManagerSwift
-    - KeychainAccess
     - Kingfisher
     - Realm
     - RealmSwift
@@ -45,7 +42,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
-  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
@@ -55,6 +51,6 @@ SPEC CHECKSUMS:
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
 
-PODFILE CHECKSUM: 5068fafdae355bcc0c13e40ea136fba8b7a19cf6
+PODFILE CHECKSUM: 74b46c7a84ab9df9bd8facdb1f15226c2a962090
 
 COCOAPODS: 1.5.0

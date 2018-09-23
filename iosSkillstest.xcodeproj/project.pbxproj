@@ -46,6 +46,7 @@
 		AC4282122156A0B1005F1888 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4282112156A0B1005F1888 /* AlbumTableViewCell.swift */; };
 		AC4282152156A359005F1888 /* UITableViewCellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4282142156A359005F1888 /* UITableViewCellIdentifier.swift */; };
 		AC71A9222156B6BC000CC37B /* UserViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC71A9212156B6BB000CC37B /* UserViewController+UITableView.swift */; };
+		AC71A92421575468000CC37B /* UsersViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC71A92321575468000CC37B /* UsersViewController+UISearchBarDelegate.swift */; };
 		ACA562DE21545A4D001F560C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA562DD21545A4D001F560C /* AppDelegate.swift */; };
 		ACA562E321545A4D001F560C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA562E121545A4D001F560C /* Main.storyboard */; };
 		ACA562E821545A53001F560C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA562E721545A53001F560C /* Assets.xcassets */; };
@@ -96,6 +97,7 @@
 		AC4282112156A0B1005F1888 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		AC4282142156A359005F1888 /* UITableViewCellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellIdentifier.swift; sourceTree = "<group>"; };
 		AC71A9212156B6BB000CC37B /* UserViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserViewController+UITableView.swift"; sourceTree = "<group>"; };
+		AC71A92321575468000CC37B /* UsersViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
 		ACA562DA21545A4D001F560C /* iosSkillstest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosSkillstest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA562DD21545A4D001F560C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACA562E221545A4D001F560C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				AC4281F7215677FD005F1888 /* UsersInteractor.swift */,
 				AC4281F8215677FD005F1888 /* UsersConfigurator.swift */,
 				AC71A9212156B6BB000CC37B /* UserViewController+UITableView.swift */,
+				AC71A92321575468000CC37B /* UsersViewController+UISearchBarDelegate.swift */,
 			);
 			path = UsersScene;
 			sourceTree = "<group>";
@@ -372,7 +375,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-iosSkillstest/Pods-iosSkillstest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -385,7 +387,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -456,6 +457,7 @@
 				ACA562DE21545A4D001F560C /* AppDelegate.swift in Sources */,
 				AC4281F9215677FD005F1888 /* UsersPresenter.swift in Sources */,
 				AC4281FD215677FD005F1888 /* UsersInteractor.swift in Sources */,
+				AC71A92421575468000CC37B /* UsersViewController+UISearchBarDelegate.swift in Sources */,
 				AC42820B21567BA8005F1888 /* AlbunsConfigurator.swift in Sources */,
 				AC42820A21567BA8005F1888 /* AlbunsInteractor.swift in Sources */,
 				AC4281ED21567769005F1888 /* TabBarRouter.swift in Sources */,
@@ -614,10 +616,7 @@
 				DEVELOPMENT_TEAM = JWBB4R368G;
 				INFOPLIST_FILE = iosSkillstest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EMV.iosSkillstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -634,10 +633,7 @@
 				DEVELOPMENT_TEAM = JWBB4R368G;
 				INFOPLIST_FILE = iosSkillstest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EMV.iosSkillstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

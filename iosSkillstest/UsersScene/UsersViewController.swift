@@ -9,13 +9,17 @@
 //  https://github.com/HelmMobile/clean-swift-templates
 
 import UIKit
+import SVProgressHUD
 
 protocol UsersViewControllerInput {
-    
+    func displayLoggedUser(viewModel: UsersScene.GetLoggedUser.ViewModel)
+    func displayUsers(viewModel: UsersScene.FetchUsers.ViewModel)
+    func displayErrorToFetchUsers(error: String)
 }
 
 protocol UsersViewControllerOutput {
-    
+    func getLoggedUser(request: UsersScene.GetLoggedUser.Request)
+    func fetchUsers(request: UsersScene.FetchUsers.Request)
 }
 
 class UsersViewController: UIViewController, UsersViewControllerInput {
@@ -24,9 +28,14 @@ class UsersViewController: UIViewController, UsersViewControllerInput {
     
     var output: UsersViewControllerOutput?
     var router: UsersRouter?
+    var loggedUser: UsersScene.GetLoggedUser.ViewModel.User?
+    var users: [UsersScene.FetchUsers.ViewModel.User] = []
+    var filteredUsers: [UsersScene.FetchUsers.ViewModel.User] = []
+    var isSFilteringUsers = false
     
     // MARK: Outlets
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tablewView: UITableView!
     
     // MARK: Object lifecycle
@@ -40,13 +49,59 @@ class UsersViewController: UIViewController, UsersViewControllerInput {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getLoggedUser()
+        fetchUsers()
     }
     
     // MARK: Requests
     
+    func getLoggedUser() {
+        let request = UsersScene.GetLoggedUser.Request()
+        output?.getLoggedUser(request: request)
+    }
+    
+    func fetchUsers() {
+        SVProgressHUD.show()
+        let request = UsersScene.FetchUsers.Request()
+        output?.fetchUsers(request: request)
+    }
+    
     
     // MARK: Display logic
     
+    func displayLoggedUser(viewModel: UsersScene.GetLoggedUser.ViewModel) {
+        loggedUser = viewModel.user
+        let indexSet = IndexSet(integer: 0)
+        tablewView.reloadSections(indexSet, with: .none)
+    }
+    
+    func displayUsers(viewModel: UsersScene.FetchUsers.ViewModel) {
+        SVProgressHUD.dismiss()
+        users = viewModel.users
+        tablewView.reloadData()
+    }
+    
+    func displayErrorToFetchUsers(error: String) {
+        SVProgressHUD.dismiss()
+        displayErrorAlert(with: error)
+    }
+ 
+}
+
+
+// MARK: IBActions
+
+extension UsersViewController {
+
+    @IBAction func logout(_ sender: Any) {
+        dismiss(animated: true)
+    }
 }
 
 //This should be on configurator but for some reason storyboard doesn't detect ViewController's name if placed there

@@ -9,10 +9,57 @@
 import Foundation
 import UIKit
 
-extension UserViewController: UITableViewDelegate {
+extension UsersViewController: UITableViewDelegate {
     
 }
 
-extension UserViewController: UITableViewDataSource {
+extension UsersViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
+            if isSFilteringUsers {
+                return filteredUsers.count
+            }
+            return users.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell") {
+                guard let userName = loggedUser?.name else {
+                    return cell
+                }
+                cell.textLabel?.text = userName
+                return cell
+            }
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell") {
+                var user: UsersScene.FetchUsers.ViewModel.User!
+                if isSFilteringUsers {
+                    user = filteredUsers[indexPath.row]
+                } else {
+                    user = users[indexPath.row]
+                }
+                cell.textLabel?.text = user.name
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Usuario Logado"
+        }
+        return "Usuarios cadastrados"
+    }
+    
     
 }

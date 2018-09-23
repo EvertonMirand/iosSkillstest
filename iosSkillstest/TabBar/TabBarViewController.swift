@@ -35,6 +35,7 @@ class TabBarViewController: UITabBarController, TabBarViewControllerInput {
     override func viewDidLoad() {
         super.viewDidLoad()
         router?.passDataToUsersVC()
+        
     }
     
     // MARK: Requests

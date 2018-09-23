@@ -12,4 +12,45 @@
 
 struct UsersScene {
     
+    struct FetchUsers {
+        
+        struct Request {
+            
+        }
+        
+        struct Response {
+            enum State {
+                case sucess([User])
+                case failure(errorMessage: String)
+            }
+
+            let state: State
+        }
+        
+        struct ViewModel {
+            struct User {
+                let email: String
+                let name: String
+            }
+            let users: [User]
+        }
+    }
+    
+    struct GetLoggedUser {
+        
+        struct Request { }
+        
+        struct Response {
+            let user: User
+        }
+        
+        struct ViewModel {
+            struct User {
+                let email: String
+                let name: String
+            }
+            
+            let user: User
+        }
+    }
 }

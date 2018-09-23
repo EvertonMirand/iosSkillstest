@@ -10,6 +10,7 @@
 
 import UIKit
 import Kingfisher
+import SVProgressHUD
 
 protocol AlbunsViewControllerInput {
     func displayError(error: String)
@@ -59,6 +60,7 @@ class AlbunsViewController: UIViewController, AlbunsViewControllerInput {
     // MARK: Requests
     
     func fetchAlbuns() {
+        SVProgressHUD.show()
         let request = AlbunsScene.FetchAlbuns.Request()
         output?.fetchAlbuns(request: request)
     }
@@ -66,10 +68,12 @@ class AlbunsViewController: UIViewController, AlbunsViewControllerInput {
     // MARK: Display logic
 
     func displayError(error: String) {
+        SVProgressHUD.dismiss()
         displayErrorAlert(with: error)
     }
 
     func displayAlbuns(viewModel: AlbunsScene.FetchAlbuns.ViewModel) {
+        SVProgressHUD.dismiss()
         albunsRow = viewModel.albumRows
         tableView.reloadData()
     }

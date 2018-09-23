@@ -13,7 +13,6 @@ target 'iosSkillstest' do
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftLint'
   pod 'SwiftMessages'
-  pod 'KeychainAccess'
   pod 'RealmSwift'
   pod 'Result'
 end
